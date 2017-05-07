@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io"
 
+	"github.com/spartanlogs/spartan/codecs"
 	"github.com/spartanlogs/spartan/event"
 )
 
@@ -11,10 +12,10 @@ import (
 type JSONLineCodec struct{}
 
 func init() {
-	Register("json_lines", newJSONLineCodec)
+	codecs.Register("json_lines", newJSONLineCodec)
 }
 
-func newJSONLineCodec() (Codec, error) {
+func newJSONLineCodec() (codecs.Codec, error) {
 	return &JSONLineCodec{}, nil
 }
 
