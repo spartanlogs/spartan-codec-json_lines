@@ -39,7 +39,9 @@ func newJSONLineCodec(options utils.InterfaceMap) (codecs.Codec, error) {
 }
 
 func (c *JSONLineCodec) setConfig(options utils.InterfaceMap) error {
-	if err := config.VerifySettings(options, jsonLineConfigSchema); err != nil {
+	var err error
+	options, err = config.VerifySettings(options, jsonLineConfigSchema)
+	if err != nil {
 		return err
 	}
 
